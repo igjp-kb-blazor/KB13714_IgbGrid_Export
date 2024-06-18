@@ -1,0 +1,37 @@
+﻿<div style="max-width: 700px; margin: auto; padding: 24px; display: flex; flex-direction: column; gap: 24px;">
+    <IgbGrid Data="_people"
+             PrimaryKey="@nameof(Person.Id)"
+             AutoGenerate="false">
+        <IgbGridToolbar>
+            <IgbGridToolbarActions>
+                <IgbGridToolbarExporter ExportStartedScript="OnExportStarted"
+                                        ExportEndedScript="OnExportEnded">
+                </IgbGridToolbarExporter>
+            </IgbGridToolbarActions>
+        </IgbGridToolbar>
+        <IgbColumn Field="@nameof(Person.Name)" Header="氏名"></IgbColumn>
+        <IgbColumn Field="@nameof(Person.Age)" Header="年齢" DataType="GridColumnDataType.Number"></IgbColumn>
+        <IgbColumn Field="@nameof(Person.JobTitle)" Header="職種"></IgbColumn>
+        <IgbColumn Field="@nameof(Person.Image)" Header="アイコン" DataType="GridColumnDataType.Image"></IgbColumn>
+    </IgbGrid>
+</div>
+
+@code {
+    public class Person
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public int Age { get; set; }
+        public string? JobTitle { get; set; }
+        public string? Image { get; set; }
+    }
+
+    private List<Person> _people = new()
+    {
+        new() { Id = 1, Name = "Bob", Age = 30, JobTitle = "Developer" ,Image="Infragistics.ico"},
+        new() { Id = 2, Name = "Alice", Age = 25, JobTitle = "Support" ,Image="Infragistics.ico"},
+        new() { Id = 3, Name = "John", Age = 40, JobTitle = "Manager" ,Image="Infragistics.ico"},
+        new() { Id = 4, Name = "Emily", Age = 35, JobTitle = "Marketing" ,Image="Infragistics.ico"},
+        new() { Id = 5, Name = "David", Age = 28, JobTitle = "Sales",Image="Infragistics.ico" }
+    };
+}
